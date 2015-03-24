@@ -26,7 +26,7 @@ public class ClientHandler {
         return name;
     }
     
-    ClientHandler(Group g){
+    public ClientHandler(Group g){
         //System.out.println("New Client Handler");
         queued = new ArrayList<>();
         group = g;

@@ -1,12 +1,13 @@
 package uk.co.threeequals.webchat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author michaelwaterworth
  */
-public class Message {
+public class Message implements Serializable{
     public String to;
     public String from;
     public Date ts;

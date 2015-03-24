@@ -12,7 +12,7 @@ public class Group {
     private LimitedQueue<Message> messages;
     public static int MESSAGEQUEUELENGTH;
     
-    Group(){
+    public Group(){
         clients = new ArrayList<>();
         messages = new  LimitedQueue<Message>(MESSAGEQUEUELENGTH);
     }
