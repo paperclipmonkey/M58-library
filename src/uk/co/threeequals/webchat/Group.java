@@ -8,13 +8,13 @@ import java.util.List;
  * @author michaelwaterworth
  */
 public class Group {
-    private List<ClientHandler> clients;
-    private LimitedQueue<Message> messages;
+    private final List<ClientHandler> clients;
+    private final LimitedQueue<Message> messages;
     public static int MESSAGEQUEUELENGTH;
     
     public Group(){
         clients = new ArrayList<>();
-        messages = new  LimitedQueue<Message>(MESSAGEQUEUELENGTH);
+        messages = new  LimitedQueue<>(MESSAGEQUEUELENGTH);
     }
     
     public boolean joinGroup(ClientHandler clientH){
