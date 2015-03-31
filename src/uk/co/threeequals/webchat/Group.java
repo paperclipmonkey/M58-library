@@ -20,11 +20,10 @@ public class Group {
     
     public boolean joinGroup(ClientHandler clientH){
         for (ClientHandler client : clients) {
-            if(clientH.getName() == client.getName()){//Don't send message back to originator
+            if(clientH.getName() == null ? client.getName() == null : clientH.getName().equals(client.getName())){//Don't send message back to originator
                 return false;
             }
         }
-        System.out.println(messages.size());
         clientH.bulkReceiver(messages);//Send all outstanding messages to client on connect
         return clients.add(clientH);
     }
@@ -46,7 +45,7 @@ public class Group {
     private void broadcastMessage(Message m){
         messages.add(m);
         for (ClientHandler client : clients) {
-            if(m.from != client.getName()){//Don't send message back to originator
+            if(m.from == null ? client.getName() != null : !m.from.equals(client.getName())){//Don't send message back to originator
                 client.broadcastReceiver(m);
             }
         }
@@ -54,7 +53,7 @@ public class Group {
     
     private void privateMessage(Message m){
         for (ClientHandler client : clients) {
-            if(m.to == client.getName()){//Send message only to named recipient
+            if(m.to == null ? client.getName() == null : m.to.equals(client.getName())){//Send message only to named recipient
                 client.broadcastReceiver(m);
             }
         }
