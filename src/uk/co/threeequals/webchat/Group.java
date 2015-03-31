@@ -11,6 +11,7 @@ public class Group {
     private final List<ClientHandler> clients;
     private final LimitedQueue<Message> messages;
     public static int MESSAGEQUEUELENGTH;
+    public static final String LOGOUTMESSAGE = " has logged out";
     
     public Group(){
         clients = new ArrayList<>();
@@ -30,6 +31,8 @@ public class Group {
     
     public void leaveGroup(ClientHandler clientH){
         clients.remove(clientH);
+        Message m = new Message(clientH.getName() + LOGOUTMESSAGE);
+        receiveMessage(m);
     }
     
     public void receiveMessage(Message m){
