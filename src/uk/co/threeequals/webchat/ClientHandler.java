@@ -151,7 +151,7 @@ public class ClientHandler {
     private void checkLogin(String str){
         str = str.replace(LOGINPARSESTRING, "");//Remove login command
         System.out.println("Password attempt: " + str);
-        if("password".equals(str)){
+        if(group.checkPassword(str)){
             System.out.println("User " + getName() + " has logged in");
             login();
         } else {

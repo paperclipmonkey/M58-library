@@ -12,10 +12,22 @@ public class Group {
     private final LimitedQueue<Message> messages;
     public static int MESSAGEQUEUELENGTH;
     public static final String LOGOUTMESSAGE = " has logged out";
+    private String adminPassword;
     
     public Group(){
         clients = new ArrayList<>();
         messages = new  LimitedQueue<>(MESSAGEQUEUELENGTH);
+    }
+    
+    public void setPassword(String pw){
+        adminPassword = pw;
+    }
+    
+    public Boolean checkPassword(String guess){
+        if(guess.matches(adminPassword)){
+            return true;
+        }
+        return false;
     }
     
     public boolean joinGroup(ClientHandler clientH){
