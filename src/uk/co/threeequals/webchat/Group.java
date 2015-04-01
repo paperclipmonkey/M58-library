@@ -9,8 +9,8 @@ import java.util.List;
  */
 public class Group {
     private final List<ClientHandler> clients;
-    private final LimitedQueue<Message> messages;
-    public static int MESSAGEQUEUELENGTH;
+    private final LimitedQueue<Message> messages;//Hold a small number of messages in the Group and add them to queue of client on connect - similar ot IRC
+    public static final int MESSAGEQUEUELENGTH = 10;
     public static final String LOGOUTMESSAGE = " has logged out";
     private String adminPassword;
     
